@@ -1,0 +1,11 @@
+.crud {
+    background-color: white;
+    justify-content: left;
+}
+
+.crud-page-content {
+    z-index: 1;
+    background-color: white;
+}
+  
+
