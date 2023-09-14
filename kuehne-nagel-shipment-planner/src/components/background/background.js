@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './background.css';
 import videoSource from './vid.mp4';
 import CardComponent from '../card/card.js';

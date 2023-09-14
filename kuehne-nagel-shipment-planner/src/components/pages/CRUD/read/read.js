@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import array from '../api-call/api-call';
+import array from '../../../api-call/api-call';
 import { v4 as uuid } from 'uuid';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Create() {
+function Read() {
     const [orderNo, setOrderNo] = useState('');
     const [date, setdate] = useState('');
     const [customer, setcustamer] = useState('');
@@ -34,7 +34,7 @@ function Create() {
 
     return (
         <div >
-            <h1>Create a new entry in CRUD table</h1>
+            <h1>Read entry in CRUD table</h1>
             <Form className="d-grid gap-2" 
                 style={{ margin: '15rem' }}>
   
@@ -102,4 +102,4 @@ function Create() {
     )
 }
 
-export default Create
+export default Read

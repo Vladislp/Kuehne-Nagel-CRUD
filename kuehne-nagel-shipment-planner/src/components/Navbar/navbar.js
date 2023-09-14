@@ -9,7 +9,7 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import React, { useState } from 'react';
 
-function NavScrollExample() {
+function Navigation() {
   const [selectedOption, setSelectedOption] = useState([]);
   const options = [
     {
@@ -43,13 +43,13 @@ function NavScrollExample() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/crud">CRUD</Nav.Link>
             <NavDropdown title="More" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
+              <NavDropdown.Item href="/Q&A">Q&A</NavDropdown.Item>
+              <NavDropdown.Item href="/about">
+                About us
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
+              <NavDropdown.Item href="/contact">
+                Contact Me
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -71,4 +71,4 @@ function NavScrollExample() {
   );
 }
 
-export default NavScrollExample;
+export default Navigation;
