@@ -1,7 +1,7 @@
 import React from 'react';
 import './background.css';
 import videoSource from './vid.mp4';
-import CardComponent from '../card/card.js';
+import CardComponent from '../background/card/card';
 
 function OverlayOfBackground() {
   // Define an array of card data
