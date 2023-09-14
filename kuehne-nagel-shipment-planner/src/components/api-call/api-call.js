@@ -9,6 +9,9 @@ function CallKuehne() {
   const [isLoading, setIsLoading] = useState(true);
   const { pathname } = useLocation();
   const renderCreateButton = pathname !== '/create';
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Number of items to display per page
+ 
 
   useEffect(() => {
     // Define the API URL
@@ -52,8 +55,53 @@ function CallKuehne() {
     );
   };
 
+  /*
+    data.length -> number of elements in data
+    itemsPerPage -> number of items we want to display
+    data.length / itemsPerPage -> how many pages would be required to distribute items
+    Math.ceil -> round up the result of the division to nearest whole number
+  */
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  /*
+    This condition checks if the current page (currentPage) 
+    is greater than 1. If it is, it means that there is a 
+    previous page of data that the user can navigate to. 
+    If the current page is 1, there is no previous page, 
+    and clicking "Previous" should have no effect.
+  */
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  /*
+    Here is basically other way around. If our current page
+    is for example 1 and it is not larger then 20 (in our case)
+    then there is a still place to go up (pages).
+  */
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   // Function to render the data as a table
   const renderTable = () => {
+    /*
+      In summary, this logic calculates the range of data 
+      (specified by startIndex and endIndex) that should be 
+      shown on the current page of a paginated list. 
+      By using the slice() method, it creates a new array 
+      containing only the data for the current page, 
+      which can then be rendered in your user interface.
+    */
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const displayedData = data.slice(startIndex, endIndex)
+
     return (
       <div>
         <MDBTable>
@@ -68,7 +116,7 @@ function CallKuehne() {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            {data.map((item, index) => (
+            {displayedData.map((item, index) => (
               <tr key={index}>
                 <td>{item.orderNo}</td>
                 <td>{item.date}</td>
@@ -92,6 +140,15 @@ function CallKuehne() {
       ) : (
         <div>
           {renderTable()}
+            <div className="pagination">
+              <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                Previous
+              </button>
+              <span>Page {currentPage} of {totalPages}</span>
+              <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+                Next
+              </button>
+          </div>
         </div>
       )}
     </div>
