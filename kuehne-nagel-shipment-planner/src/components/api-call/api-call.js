@@ -4,11 +4,12 @@ import axios from 'axios';
 
 
 function Shipments() {
+
     const baseUrl = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
     const [listArray, setList] = useState([]);
     const [value, setValue] = useState();       // For reloading the table after deleting a row
     const Count = []; // How many rows do we need for data
-    const arr = [];
+    const arr = []; // The data that we get from api, empty array where we push "response"
     // For popup menu
     const [orderno, setOrderno] = useState();
     const [date, setDate] = useState();
@@ -22,7 +23,6 @@ function Shipments() {
     const fetchData = async () => {
         const url = `${baseUrl}`;
         const response = await axios.get(url);
-        console.log(response.data);
         response.data.forEach(element => {      // Setting each piece of data into an array
             arr.push(element);
         });

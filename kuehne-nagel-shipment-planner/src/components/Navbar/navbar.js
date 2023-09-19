@@ -1,21 +1,12 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logoImage from '../Navbar/logo/test.webp';
-import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import React, { useState } from 'react';
 
 function Navigation() {
-  const [selectedOption, setSelectedOption] = useState([]);
-  const options = [
-    {
-      title: "hello"
-    }
-  ];
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -53,18 +44,6 @@ function Navigation() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
-          <Typeahead
-            id="search-bar"
-            labelKey="name"
-            options={options}
-            selected={selectedOption}
-            onChange={(selected) => setSelectedOption(selected)}
-            placeholder="Search"
-          />
-
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
