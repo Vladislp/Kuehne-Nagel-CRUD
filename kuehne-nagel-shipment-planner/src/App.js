@@ -4,13 +4,10 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Navigation from './components/Navbar/navbar';
 import OverlayOfBackground from './components/background/background';
 import CrudTable from './components/background/card/crud';
-import Create from './components/pages/CRUD/create/create';
 import QA from './components/pages/Q&A/Q&A';
 import AboutMe from './components/pages/about/about';
 import ContactMe from './components/pages/contact/ContactMe';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import Read from './components/pages/CRUD/read/read';
-import Update from './components/pages/CRUD/update/update';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 
@@ -32,12 +29,9 @@ function App() {
         <footer>
             <Routes>
               <Route exact path="/crud" element={<CrudTable />} />
-              <Route path="/create" element={<Create />} />
               <Route path="/Q&A" element={<QA />} />
               <Route path="/about" element={<AboutMe />} />
               <Route path="/contact" element={<ContactMe />} />
-              <Route path="/read" element={<Read />} />
-              <Route path="/update" element={<Update />} />
             </Routes>
 
         <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>

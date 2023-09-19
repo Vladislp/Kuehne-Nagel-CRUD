@@ -30,20 +30,20 @@ function OverlayOfBackground() {
       </video>
       <div className="overlay"></div>
       <div className='content-container'>
-      <div className="content">
-        <h1>Welcome to Kühne+Nagel unofficial CRUD page</h1>
-        <p>You will see CRUD table, after you press "CRUD" and proceed to lower part of the page</p>
-            <div className="cards-container">
-              {cardData.map((card, index) => (
-                <CardComponent
-                  key={index}
-                  imageSrc={card.imageSrc}
-                  title={card.title}
-                  text={card.text}
-                />
-              ))}
-            </div>
-      </div>
+        <div className="content">
+          <h1>Welcome to Kühne+Nagel unofficial CRUD page</h1>
+          <p>You will see CRUD table, after you press "CRUD" and proceed to lower part of the page</p>
+              <div className="cards-container">
+                {cardData.map((card, index) => (
+                  <CardComponent
+                    key={index}
+                    imageSrc={card.imageSrc}
+                    title={card.title}
+                    text={card.text}
+                  />
+                ))}
+              </div>
+        </div>
       </div>
     </div>
   );

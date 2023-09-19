@@ -1,158 +1,114 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Table, Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
-function CallKuehne() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { pathname } = useLocation();
-  const renderCreateButton = pathname !== '/create';
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Number of items to display per page
- 
 
-  useEffect(() => {
-    // Define the API URL
-    const apiUrl = 'https://my.api.mockaroo.com/shipments.json?key=5e0b62d0';
-    // Make the API call
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        // Handle successful response
-        setData(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // Handle error
-        console.error('Error fetching data:', error);
-        setIsLoading(false);
-      });
-  }, []);
+function Shipments() {
+    const baseUrl = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
+    const [listArray, setList] = useState([]);
+    const [value, setValue] = useState();       // For reloading the table after deleting a row
+    const Count = []; // How many rows do we need for data
+    const arr = [];
+    // For popup menu
+    const [orderno, setOrderno] = useState();
+    const [date, setDate] = useState();
+    const [customer, setCustomer] = useState();
+    const [trackingno, setTrackingno] = useState();
+    const [status, setStatus] = useState();
+    const [consignee, setConsignee] = useState();
+    const [show, setShow] = useState(false);
+    
+    // Fetching the data
+    const fetchData = async () => {
+        const url = `${baseUrl}`;
+        const response = await axios.get(url);
+        console.log(response.data);
+        response.data.forEach(element => {      // Setting each piece of data into an array
+            arr.push(element);
+        });
+        setList(arr);
 
-  // Function to render the buttons in the footer
-  const renderFooterButtons = () => {
-    if (!renderCreateButton) {
-      return null;
-    }
+    };
+    useEffect(() => {
+        fetchData();
+    },[]);
 
-    return (
-      <>
-        <Link to="/create" className="btn btn-primary">
-          Create
-        </Link>
-        <Link to="/read" className="btn btn-primary">
-          Read
-        </Link>
-        <Link to="/update" className="btn btn-primary">
-          Update
-        </Link>
-        <Link to="/delete" className="btn btn-primary">
-          Delete
-        </Link>
-      </>
-    );
-  };
+    for(var i = 0; i < listArray.length; i++){Count.push(i)}    // To generate required number of rows for the table
+    
+    let tableList = Count.map((i)=>{                            // Generates the tables with there correct fields
+        return(
+                <tr>
+                    <th>{ listArray[i].orderNo }</th>
+                    <th>{ listArray[i].date }</th>
+                    <th>{ listArray[i].customer }</th>
+                    <th>{ listArray[i].trackingNo }</th>
+                    <th>{ listArray[i].status }</th>
+                    <th>{ listArray[i].consignee }</th>
+                    <th>
+                        <Button onClick={()=>{                      // Changes data in the pop-up panel to the picked row's data
+                            setOrderno(listArray[i].orderNo);
+                            setDate(listArray[i].date);
+                            setCustomer(listArray[i].customer);
+                            setTrackingno(listArray[i].trackingNo);
+                            setStatus(listArray[i].status);
+                            setConsignee(listArray[i].consignee);
+                            setShow(true);
+                        }}>Details</Button>
+                    </th>
+                    <th>    
+                        <Button variant='danger' onClick={()=> {listArray.splice(i, 1); setValue({});} }>Delete</Button>
+                    </th>
+                </tr>
 
-  /*
-    data.length -> number of elements in data
-    itemsPerPage -> number of items we want to display
-    data.length / itemsPerPage -> how many pages would be required to distribute items
-    Math.ceil -> round up the result of the division to nearest whole number
-  */
+            
+        )
+    });
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  /*
-    This condition checks if the current page (currentPage) 
-    is greater than 1. If it is, it means that there is a 
-    previous page of data that the user can navigate to. 
-    If the current page is 1, there is no previous page, 
-    and clicking "Previous" should have no effect.
-  */
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  /*
-    Here is basically other way around. If our current page
-    is for example 1 and it is not larger then 20 (in our case)
-    then there is a still place to go up (pages).
-  */
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  // Function to render the data as a table
-  const renderTable = () => {
-    /*
-      In summary, this logic calculates the range of data 
-      (specified by startIndex and endIndex) that should be 
-      shown on the current page of a paginated list. 
-      By using the slice() method, it creates a new array 
-      containing only the data for the current page, 
-      which can then be rendered in your user interface.
-    */
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const displayedData = data.slice(startIndex, endIndex)
-
-    return (
-      <div>
-        <MDBTable>
-          <MDBTableHead>
-            <tr>
-              <th>Order No</th>
-              <th>Date</th>
-              <th>Customer</th>
-              <th>Tracking No</th>
-              <th>Status</th>
-              <th>Consignee</th>
-            </tr>
-          </MDBTableHead>
-          <MDBTableBody>
-            {displayedData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.orderNo}</td>
-                <td>{item.date}</td>
-                <td>{item.customer}</td>
-                <td>{item.trackingNo}</td>
-                <td>{item.status}</td>
-                <td>{item.consignee}</td>
-              </tr>
-            ))}
-          </MDBTableBody>
-        </MDBTable>
-        <footer>{renderFooterButtons()}</footer>
-      </div>
-    );
-  };
-
-  return (
-    <div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+    return(
         <div>
-          {renderTable()}
-            <div className="pagination">
-              <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                Previous
-              </button>
-              <span>Page {currentPage} of {totalPages}</span>
-              <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                Next
-              </button>
-          </div>
+            <Table striped bordered hover variant="light">
+                <thead>
+                    <tr>
+                        <th>ORDER NO</th>
+                        <th>DELIVERY DATE</th>
+                        <th>CUSTOMER</th>
+                        <th>TRACKING NO</th>
+                        <th>STATUS</th>
+                        <th>CONSIGNEE</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tableList}
+                </tbody>
+            </Table>
+            <Modal show={show} size="lg" onHide={()=>{setShow(false)}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Shipment Details</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div>
+                        <div style={{width:"50%", float: "left"}}>
+                            <h4>OrderNo</h4>
+                            <p>{ orderno }</p>
+                            <h4>Customer</h4>
+                            <p>{ customer }</p>
+                            <h4>Consignee</h4>
+                            <p>{ consignee }</p>
+                        </div>
+                        <div style={{width:"50%", float: "left"}}>
+                            <h4>Date</h4>
+                            <p>{ date }</p>
+                            <h4>TrackingNo</h4>
+                            <p>{ trackingno }</p>
+                            <h4>Status</h4>
+                            <p>{ status }</p>
+                        </div>
+                    </div>    
+                </Modal.Body>
+            </Modal>
         </div>
-      )}
-    </div>
-  );
+    )
 }
 
-export default CallKuehne;
+export default Shipments
