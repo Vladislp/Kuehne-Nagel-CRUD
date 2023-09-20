@@ -5,8 +5,15 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logoImage from '../Navbar/logo/test.webp';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 
 function Navigation() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -43,6 +50,20 @@ function Navigation() {
                 Contact Me
               </NavDropdown.Item>
             </NavDropdown>
+
+            <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>Some more info</Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                This is made for implementation purposes. 
+                I mean, that i don't really know what to put here...
+                but it's here.
+              </Offcanvas.Body>
+            </Offcanvas>
+            <Button variant="primary" className='Launch' onClick={handleShow}>
+              Press me
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -7,6 +7,7 @@ import CrudTable from './components/background/card/crud';
 import QA from './components/pages/Q&A/Q&A';
 import AboutMe from './components/pages/about/about';
 import ContactMe from './components/pages/contact/ContactMe';
+import { FormPage } from './components/pages/Q&A/EmailSend/EmailSend';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
@@ -32,6 +33,8 @@ function App() {
               <Route path="/Q&A" element={<QA />} />
               <Route path="/about" element={<AboutMe />} />
               <Route path="/contact" element={<ContactMe />} />
+              <Route path="/offcanvas" element={<ContactMe />} />
+              <Route path="/email" element={<FormPage />} />
             </Routes>
 
         <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
