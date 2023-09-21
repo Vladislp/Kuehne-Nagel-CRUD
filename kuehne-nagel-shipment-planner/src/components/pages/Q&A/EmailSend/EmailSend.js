@@ -45,7 +45,7 @@ export const FormPage = (props) => {
         <Form>
             <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Name*</Form.Label>
-                <Form.Control onChange= {handleChange} name="name" type="name" placeholder="Name" />
+                <Form.Control onChange= {handleChange} name="name" type="name" placeholder="Enter name" />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridEmail">
@@ -54,12 +54,12 @@ export const FormPage = (props) => {
                 />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridMobile">
-                <Form.Label>Mobile no.*</Form.Label>
-                <Form.Control onChange= {handleChange} name="mobile" placeholder="" />
+                <Form.Label>Mobile no.</Form.Label>
+                <Form.Control onChange= {handleChange} name="mobile" placeholder="Enter mobile number" />
             </Form.Group>
             <Form.Group as={Col} id="formGridQuery">
-                <Form.Label>Query*</Form.Label>
-                <Form.Control onChange= {handleChange} name="query" as="textarea" rows={3} />
+                <Form.Label>Text</Form.Label>
+                <Form.Control onChange= {handleChange} name="query" placeholder="Enter your message" as="textarea" rows={3} />
             </Form.Group>
 
             <Button onClick={handleSubmit} variant="primary" type="submit">
