@@ -39,17 +39,17 @@ Open your web browser and visit http://localhost:3000 to access the application.
 
 ## Usage
 
-  Navigate to the homepage to view the list of shipments.
+   ~ Navigate to the homepage to view the list of shipments.
   
-  Use the filter options to refine the list of shipments.
+   ~ Use the filter options to refine the list of shipments.
   
-  Click on a shipment to view its details.
+   ~ Click on a shipment to view its details.
   
-  Click the "Add Shipment" button to create a new shipment.
+   ~ Click the "Add Shipment" button to create a new shipment.
   
-  Click the "Edit" button on a shipment to update its details.
+   ~ Click the "Edit" button on a shipment to update its details.
   
-  Click the "Delete" button on a shipment to remove it.
+   ~ Click the "Delete" button on a shipment to remove it.
 
 ## API Endpoint
 
@@ -62,25 +62,25 @@ Please note that this is a sample API with usage limits for free accounts. You c
 
 This project is built using the following technologies:
 
-  React: A JavaScript library for building user interfaces.
+  ~ React: A JavaScript library for building user interfaces.
   
-  axios: A promise-based HTTP client for making API requests.
+  ~ axios: A promise-based HTTP client for making API requests.
   
-  react-bootstrap: A library for building responsive web components.
+  ~ react-bootstrap: A library for building responsive web components.
 
 ## Contributing
 
 Contributions to this project are welcome! If you have any bug fixes, improvements, or new features to add, please follow these steps:
 
-  Fork the repository.
+  ~ Fork the repository.
     
-  Create a new branch for your changes: git checkout -b feature/your-feature-name.
+  ~ Create a new branch for your changes: git checkout -b feature/your-feature-name.
     
-  Make your changes and commit them: git commit -m "Add your feature".
+  ~ Make your changes and commit them: git commit -m "Add your feature".
     
-  Push to your forked repository: git push origin feature/your-feature-name.
+  ~ Push to your forked repository: git push origin feature/your-feature-name.
     
-  Create a pull request to the main repository.
+  ~ Create a pull request to the main repository.
 
 ## License
 
