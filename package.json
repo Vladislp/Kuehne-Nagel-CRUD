@@ -2,6 +2,7 @@
   "name": "kuehne-nagel-shipment-planner",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Vladislp.github.io/Vladislp.github.io",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.1",
@@ -29,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "react-crud-table": "^0.3.1"
   }
 }
