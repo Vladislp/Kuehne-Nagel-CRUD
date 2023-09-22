@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vladislp.github.io/static/css/main.fe382882.css",
+    "main.js": "/Vladislp.github.io/static/js/main.d815bdfb.js",
+    "static/media/vid.mp4": "/Vladislp.github.io/static/media/vid.ad276da55aff30787b6c.mp4",
+    "static/media/test.webp": "/Vladislp.github.io/static/media/test.2bcee3507d33400c93c1.webp",
+    "index.html": "/Vladislp.github.io/index.html",
+    "main.fe382882.css.map": "/Vladislp.github.io/static/css/main.fe382882.css.map",
+    "main.d815bdfb.js.map": "/Vladislp.github.io/static/js/main.d815bdfb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe382882.css",
+    "static/js/main.d815bdfb.js"
+  ]
+}
