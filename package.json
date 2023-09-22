@@ -2,7 +2,7 @@
   "name": "kuehne-nagel-shipment-planner",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Vladislp.github.io/Vladislp.github.io",
+  "homepage": "https://Vladislp.github.io/",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.1",
