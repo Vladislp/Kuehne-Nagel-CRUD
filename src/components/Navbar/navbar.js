@@ -18,7 +18,7 @@ function Navigation() {
   const handleShow = () => setShow(true);
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" style={{ background: 'linear-gradient(274deg, rgba(9,9,121,1) 14%, rgba(0,212,255,1) 100%)' }} className="bg-body-tertiary">
       <Container fluid>
       <Navbar.Brand 
           href="/">
@@ -45,7 +45,7 @@ function Navigation() {
             <NavDropdown title="More" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/Q&A">Q&A</NavDropdown.Item>
               <NavDropdown.Item href="/about">
-                About us
+                Who are you ?
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/contact">
@@ -53,7 +53,9 @@ function Navigation() {
               </NavDropdown.Item>
             </NavDropdown>
 
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={show} style={{ 
+                background: 'linear-gradient(to right, #090979, #FF8C00)' 
+            }} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>CRUD</Offcanvas.Title>
               </Offcanvas.Header>

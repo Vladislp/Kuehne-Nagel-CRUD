@@ -88,7 +88,7 @@ function Shipments() {
 
     return (
         <div>
-            <Table striped bordered hover variant="light">
+            <Table striped bordered hover variant="light" >
                 <thead>
                     <tr>
                         <th>ORDER NO</th>
@@ -104,11 +104,11 @@ function Shipments() {
                     {tableList}
                 </tbody>
             </Table>
-            <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end" style={{ marginRight: '20px' }}>
                 <Button variant="primary" className='mr-2' onClick={prevPage}>
                     Previous
                 </Button>
-                <Button variant="primary" onClick={nextPage}>
+                <Button variant="primary" style={{ marginLeft: '10px' }} onClick={nextPage}>
                     Next
                 </Button>
             </div>
