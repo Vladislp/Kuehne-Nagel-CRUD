@@ -52,7 +52,8 @@
 .Launch {
     width: auto;
     height: auto;
-    margin-left: 160vh;
+    margin-left: 150vh;
+
 }
 
 @media (max-width: 768px) {
