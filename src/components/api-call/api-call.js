@@ -11,12 +11,24 @@ function Shipments() {
     const [selectedShipment, setSelectedShipment] = useState(null);
     const itemsPerPage = 5;
 
-    // Fetching the data
     const fetchData = async () => {
-        const url = `${baseUrl}`;
-        const response = await axios.get(url);
-        setList(response.data);
-    };
+        try {
+          const externalUrl = `${baseUrl}/shipments`; // URL of the external API
+          const response = await axios.get(externalUrl);
+          setList(response.data);
+        } catch (error) {
+          console.error(error);
+      
+          // If there was an error with the external API, load data from the local file
+          try {
+            const localUrl = './Shipments.txt'; // Assuming the file is in the same directory
+            const response = await axios.get(localUrl);
+            setList(response.data);
+          } catch (localError) {
+            console.error('Error loading data from the local file:', localError);
+          }
+        }
+      };
 
     useEffect(() => {
         fetchData();
