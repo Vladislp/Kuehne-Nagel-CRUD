@@ -13,22 +13,15 @@ function Shipments() {
 
     const fetchData = async () => {
         try {
-          const externalUrl = `${baseUrl}/shipments`; // URL of the external API
-          const response = await axios.get(externalUrl);
-          setList(response.data);
-        } catch (error) {
-          console.error(error);
-      
-          // If there was an error with the external API, load data from the local file
-          try {
-            const localUrl = './Shipments.txt'; // Assuming the file is in the same directory
-            const response = await axios.get(localUrl);
+            // Make an HTTP GET request to your Express server's /localdata endpoint
+            const response = await axios.get('http://localhost:3001/localdata'); // Adjust the URL as needed
+
+            // Set the retrieved data in state
             setList(response.data);
-          } catch (localError) {
-            console.error('Error loading data from the local file:', localError);
-          }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-      };
+    };
 
     useEffect(() => {
         fetchData();
