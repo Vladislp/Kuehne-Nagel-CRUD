@@ -2,6 +2,21 @@
 
 Welcome to the Shipment Tracking System project! This is a web application that allows you to track and manage shipments. It provides a user-friendly interface to view shipment details, filter shipments, and perform various CRUD (Create, Read, Update, Delete) operations on shipments.
 
+## 🚀 Introducing the NEW Server Feature!
+
+Now, my project comes with a robust server for seamless data retrieval from various endpoints
+
+## Known issue
+
+**Local File Option:** In case of faulty endpoints
+
+![image](https://github.com/Vladislp/Kuehne-Nagel-CRUD/assets/42935979/aff357f5-2eaf-4b11-9ce7-2c0dc635a17d)
+
+you can leverage our local file reading feature. Simply follow these steps:
+   - Place the data you need in a local file.
+   - Configure the server to read from the local file instead of the endpoint.
+   - Enjoy uninterrupted data access!
+
 ## Table of Contents
 
 - [Features](#features)
@@ -26,16 +41,44 @@ Welcome to the Shipment Tracking System project! This is a web application that 
 
 To get started with this project, follow these steps:
 
+**Front-End**
+
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/Vladislp/Kuehne-Nagel-CRUD.git
-2. Install project dependencies:
+2. Go to the project root folder
+   ```bash
+   cd /project/root/folder
+3. Install project dependencies:
    ```bash
    npm install
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm start
 Open your web browser and visit http://localhost:3000 to access the application.
+
+**Back-end**
+
+1. Go to the project server folder
+   ```bash
+   cd /project/server/folder/server
+
+2. Go to the "routes" folder
+   ```bash
+   cd /project/server/folder/server/routes
+3. Run server
+   ```bash
+   node shipments.js
+
+Server currently works on **http://localhost:3001**
+
+**Without server working**
+
+![image](https://github.com/Vladislp/Kuehne-Nagel-CRUD/assets/42935979/cb66fcd4-063e-4431-9f38-bf9b05c27a6b)
+
+**With server working**
+
+![image](https://github.com/Vladislp/Kuehne-Nagel-CRUD/assets/42935979/4acdccb3-99d8-4c26-a2ad-0960ac4bbabd)
 
 ## Usage
 
