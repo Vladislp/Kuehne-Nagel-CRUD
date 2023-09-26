@@ -39,6 +39,21 @@ function Shipments() {
         }
     };
 
+    const handleDescriptionClick = (shipment) => {
+        setSelectedShipment(shipment);
+        setShow(true);
+    };
+
+    const handleClose = () => {
+        setShow(false);
+        setSelectedShipment(null);
+    };
+
+    const handleDeleteClick = (shipment) => {
+        const updatedList = listArray.filter((item) => item.orderNo !== shipment.orderNo);
+        setList(updatedList);
+    };
+
     const totalItems = listArray.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -75,21 +90,6 @@ function Shipments() {
             </tr>
         );
     });
-
-    const handleDescriptionClick = (shipment) => {
-        setSelectedShipment(shipment);
-        setShow(true);
-    };
-
-    const handleClose = () => {
-        setShow(false);
-        setSelectedShipment(null);
-    };
-
-    const handleDeleteClick = (shipment) => {
-        const updatedList = listArray.filter((item) => item.orderNo !== shipment.orderNo);
-        setList(updatedList);
-    };
 
     return (
         <div>

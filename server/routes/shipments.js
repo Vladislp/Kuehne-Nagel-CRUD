@@ -21,7 +21,6 @@ app.get('/shipments', async (req, res) => {
   }
 });
 
-
 // Define a route for the root URL
 app.get('/', (req, res) => {
   res.send('Hello, server is running');
@@ -47,11 +46,6 @@ app.get('/localdata', (req, res) => {
     res.status(500).json({ error: 'An error occurred while handling the request.' });
   }
 });
-
-// Define a route for the root URL
-app.get('/shipments', (req, res) => {
-    res.send('Hello, server is running');
-  });
 
 // Start the server
 app.listen(port, () => {
