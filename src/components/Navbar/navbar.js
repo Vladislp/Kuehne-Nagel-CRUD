@@ -10,7 +10,6 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-
 function Navigation() {
   const [show, setShow] = useState(false);
 
@@ -47,6 +46,8 @@ function Navigation() {
               <NavDropdown.Item href="/about">
                 Who are you ?
               </NavDropdown.Item>
+              <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+              <NavDropdown.Item href="/register">Register</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/contact">
                 Contact Me

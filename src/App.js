@@ -10,6 +10,8 @@ import ContactMe from './components/pages/contact/ContactMe';
 import { FormPage } from './components/pages/Q&A/EmailSend/EmailSend';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import Login from './components/pages/login/login';
+import Register from './components/pages/register/register';
 
 
 
@@ -35,6 +37,8 @@ function App() {
               <Route path="/contact" element={<ContactMe />} />
               <Route path="/offcanvas" element={<ContactMe />} />
               <Route path="/email" element={<FormPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
 
         <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
