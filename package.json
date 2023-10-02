@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "material-react-table": "^1.14.0",
     "mdb-react-ui-kit": "^6.3.0",
+    "mongodb": "^6.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-typeahead": "^6.2.3",
